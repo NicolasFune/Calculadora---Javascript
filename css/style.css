@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'display';
+    src: url(../fonts/Calculator.ttf);
+}
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+}
+.display{
+    width:500px;
+    height: 100px;
+
+    background-color: black;
+    border: 1px solid gray;
+
+    color: white;
+    font-family: 'display';
+    font-size: 3rem;
+    text-align:end;
+    
+}
+.bnt_number,.bnt_operator{
+    width: 50px;
+    height: 50px;
+
+}
