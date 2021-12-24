@@ -65,17 +65,43 @@ bnt_igual.addEventListener("click",()=>{
         console.log(Operadores[h])
     }
 
+    let NumerosParte01 = []
+    let NumerosParte02 = []
     for(let i=0;i<Operadores.length;i++){
-        // if(Operadores[i]=="x" || Operadores[i]=="/"){
-            
-        // }else{
+        if(Operadores[i]=="x" || Operadores[i]=="/"){
+            Numeros[i]=ExecutarOperaçãoMatemática(parseInt(Numeros[i]),parseInt(Numeros[i+1]),Operadores[i])
+            NumerosParte01 = Numeros.slice(0,i+1)
+            console.log("NumerosParte01: ")
+                for(let h=0;h<NumerosParte01.length;h++){
+                    console.log(NumerosParte01[h])
+                }
+            if(i+2>Numeros.length-1){
+                console.log("NumerosParte01: ")
+                for(let h=0;h<NumerosParte01.length;h++){
+                    console.log(NumerosParte01[h])
+                }
 
-        // }
-        Numeros[1]=ExecutarOperaçãoMatemática(parseInt(Numeros[0]),parseInt(Numeros[1]),Operadores[i])
-        Numeros.shift()
+            }else{
+                NumerosParte02 = Numeros.slice(i+2,Numeros.length)
+                console.log("NumerosParte02: ")
+                for(let h=0;h<NumerosParte02.length;h++){
+                    console.log(NumerosParte02[h])
+                }
+            }
+            Numeros = NumerosParte01.concat(NumerosParte02)
+            console.log("Numeros: ")
+            for(let t=0;t<Numeros.length;t++){
+                console.log(Numeros[t])
+            }
+            
+        }else{
+
+        }
+
+        
     }
 
-    AtualizarDisplay(Numeros[0])
+    //AtualizarDisplay(Numeros[0])
     
 })
 function EmpurrarNoArrayDisplay(digito){
