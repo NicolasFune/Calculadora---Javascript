@@ -11,6 +11,7 @@ const bnt_ = document.querySelectorAll(".bnt_")
 Array.from(bnt_).forEach(()=>{
     let button = bnt_.item(i)
     button.addEventListener("click",()=>{
+        display.style.animation="none"
         EmpurrarNoArrayDisplay(button.innerHTML)
         AtualizarDisplay(AtuaisValoresDoArrayContatenados)
     })
