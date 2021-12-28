@@ -26,8 +26,8 @@ CE.addEventListener("click",()=>{
 bnt_igual.addEventListener("click",()=>{
     let ArrayDosNumeros=[]
     let NovoNumero = ""
-    let Numeros = []
-    let Operadores = []
+    let Array_Numeros = []
+    let Array_Operadores = []
    
     console.clear()
     for(let z=0;z<Array_display.length;z++){
@@ -39,8 +39,8 @@ bnt_igual.addEventListener("click",()=>{
                 NovoNumero = NovoNumero + ArrayDosNumeros[y]
                 
             }
-            Numeros.push(NovoNumero)
-            Operadores.push(Array_display[z])
+            Array_Numeros.push(NovoNumero)
+            Array_Operadores.push(Array_display[z])
             ArrayDosNumeros=[]
        
         }else{
@@ -54,9 +54,13 @@ bnt_igual.addEventListener("click",()=>{
         NovoNumero = NovoNumero + ArrayDosNumeros[y]
         
     }
-    Numeros.push(NovoNumero)
+    Array_Numeros.push(NovoNumero)
 
-ExecutarTodasAsOperaçõesNoDisplay("x")
+    let Resultado = ExecutarTodasAsOperaçõesNoDisplay(Array_Numeros,Array_Operadores)
+    AtualizarDisplay(Resultado)
+
+
+
     
    
 
@@ -103,18 +107,19 @@ function ExecutarOperaçãoMatemática(numero1,numero2,operação){
     }
 }
 
-function ExecutarTodasAsOperaçõesNoDisplay(operação){
-    let Numeros = []
-    let Operadores = []
+function ExecutarTodasAsOperaçõesNoDisplay(Numeros,Operadores){
     let NovoNumeros = []
     let NovoNumeros_P2=[]
     let NovoOperadores=[]
     let NovoOperadores_P2=[]
-    
+
+    console.log("------------------------------- AS OPERAÇÕES DE DIVISÃO COMEÇAM AQUI -------------------------------")
+
+    while(Operadores.indexOf("/") !=-1){
         for(let i=0;i<Operadores.length;i++){
 
-            if(Operadores[i]==operação){
-                Numeros[i]=ExecutarOperaçãoMatemática(parseInt(Numeros[i]),parseInt(Numeros[i+1]),Operadores[i])
+            if(Operadores[i]=="/"){
+                Numeros[i]=ExecutarOperaçãoMatemática(parseFloat(Numeros[i]),parseFloat(Numeros[i+1]),Operadores[i])
     
                 NovoNumeros = Numeros.slice(0,i+1)
                 NovoNumeros_P2 = Numeros.slice(i+2,Numeros.length)
@@ -157,6 +162,159 @@ function ExecutarTodasAsOperaçõesNoDisplay(operação){
     
             
         }
+    }
+
+    console.log("------------------------------- AS OPERAÇÕES DE MULTIPLICAÇÃO COMEÇAM AQUI -------------------------------")
+    
+    while(Operadores.indexOf("x") !=-1){
+        for(let i=0;i<Operadores.length;i++){
+
+            if(Operadores[i]=="x"){
+                Numeros[i]=ExecutarOperaçãoMatemática(parseFloat(Numeros[i]),parseFloat(Numeros[i+1]),Operadores[i])
+    
+                NovoNumeros = Numeros.slice(0,i+1)
+                NovoNumeros_P2 = Numeros.slice(i+2,Numeros.length)
+    
+                console.log("NovoNumeros: ")
+                for(let t=0;t<NovoNumeros.length;t++){
+                    console.log(NovoNumeros[t])
+                }
+                console.log("NovoNumeros_P2: ")
+                for(let t=0;t<NovoNumeros_P2.length;t++){
+                    console.log(NovoNumeros_P2[t])
+                }
+    
+    
+                NovoOperadores = Operadores.slice(0,i)
+                NovoOperadores_P2 = Operadores.slice(i+1,Operadores.length)
+    
+                console.log("NovoOperadores: ")
+                for(let t=0;t<NovoOperadores.length;t++){
+                    console.log(NovoOperadores[t])
+                }
+                console.log("NovoOperadores_P2: ")
+                for(let t=0;t<NovoOperadores_P2.length;t++){
+                    console.log(NovoOperadores_P2[t])
+                }
+    
+    
+                Numeros = NovoNumeros.concat(NovoNumeros_P2)
+                Operadores = NovoOperadores.concat(NovoOperadores_P2)
+                console.log("Numeros: ")
+                for(let t=0;t<Numeros.length;t++){
+                    console.log(Numeros[t])
+                }
+                console.log("Operadores: ")
+                for(let t=0;t<Operadores.length;t++){
+                    console.log(Operadores[t])
+                }
+                
+            }
+    
+            
+        }
+    }
+    
+    console.log("------------------------------- AS OPERAÇÕES DE ADIÇÃO COMEÇAM AQUI -------------------------------")
+    while(Operadores.indexOf("+") !=-1){
+        for(let i=0;i<Operadores.length;i++){
+
+            if(Operadores[i]=="+"){
+                Numeros[i]=ExecutarOperaçãoMatemática(parseFloat(Numeros[i]),parseFloat(Numeros[i+1]),Operadores[i])
+    
+                NovoNumeros = Numeros.slice(0,i+1)
+                NovoNumeros_P2 = Numeros.slice(i+2,Numeros.length)
+    
+                console.log("NovoNumeros: ")
+                for(let t=0;t<NovoNumeros.length;t++){
+                    console.log(NovoNumeros[t])
+                }
+                console.log("NovoNumeros_P2: ")
+                for(let t=0;t<NovoNumeros_P2.length;t++){
+                    console.log(NovoNumeros_P2[t])
+                }
+    
+    
+                NovoOperadores = Operadores.slice(0,i)
+                NovoOperadores_P2 = Operadores.slice(i+1,Operadores.length)
+    
+                console.log("NovoOperadores: ")
+                for(let t=0;t<NovoOperadores.length;t++){
+                    console.log(NovoOperadores[t])
+                }
+                console.log("NovoOperadores_P2: ")
+                for(let t=0;t<NovoOperadores_P2.length;t++){
+                    console.log(NovoOperadores_P2[t])
+                }
+    
+    
+                Numeros = NovoNumeros.concat(NovoNumeros_P2)
+                Operadores = NovoOperadores.concat(NovoOperadores_P2)
+                console.log("Numeros: ")
+                for(let t=0;t<Numeros.length;t++){
+                    console.log(Numeros[t])
+                }
+                console.log("Operadores: ")
+                for(let t=0;t<Operadores.length;t++){
+                    console.log(Operadores[t])
+                }
+                
+            }
+    
+            
+        }
+    }
+
+    console.log("------------------------------- AS OPERAÇÕES DE SUBTRAÇÃO COMEÇAM AQUI -------------------------------")
+    while(Operadores.indexOf("-") !=-1){
+        for(let i=0;i<Operadores.length;i++){
+
+            if(Operadores[i]=="-"){
+                Numeros[i]=ExecutarOperaçãoMatemática(parseFloat(Numeros[i]),parseFloat(Numeros[i+1]),Operadores[i])
+    
+                NovoNumeros = Numeros.slice(0,i+1)
+                NovoNumeros_P2 = Numeros.slice(i+2,Numeros.length)
+    
+                console.log("NovoNumeros: ")
+                for(let t=0;t<NovoNumeros.length;t++){
+                    console.log(NovoNumeros[t])
+                }
+                console.log("NovoNumeros_P2: ")
+                for(let t=0;t<NovoNumeros_P2.length;t++){
+                    console.log(NovoNumeros_P2[t])
+                }
+    
+    
+                NovoOperadores = Operadores.slice(0,i)
+                NovoOperadores_P2 = Operadores.slice(i+1,Operadores.length)
+    
+                console.log("NovoOperadores: ")
+                for(let t=0;t<NovoOperadores.length;t++){
+                    console.log(NovoOperadores[t])
+                }
+                console.log("NovoOperadores_P2: ")
+                for(let t=0;t<NovoOperadores_P2.length;t++){
+                    console.log(NovoOperadores_P2[t])
+                }
+    
+    
+                Numeros = NovoNumeros.concat(NovoNumeros_P2)
+                Operadores = NovoOperadores.concat(NovoOperadores_P2)
+                console.log("Numeros: ")
+                for(let t=0;t<Numeros.length;t++){
+                    console.log(Numeros[t])
+                }
+                console.log("Operadores: ")
+                for(let t=0;t<Operadores.length;t++){
+                    console.log(Operadores[t])
+                }
+                
+            }
+    
+            
+        }
+    }
+        return Numeros[0]
 }
 
 
