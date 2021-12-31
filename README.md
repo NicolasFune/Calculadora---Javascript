@@ -1,3 +1,3 @@
 # Calculadora - Javascript
- ## Uma simples calculadora Javascript
- https://nicolasfune.github.io/Calculadora---Javascript/
+ ## Uma simples calculadora Javascript (Complete)
+ [Run App](https://nicolasfune.github.io/Calculadora---Javascript/)
